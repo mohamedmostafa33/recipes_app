@@ -1,0 +1,41 @@
+.mb-3 input, .mb-4 input{
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    border: 1px solid rgb(185, 185, 185);
+    margin-top: 8px;
+}
+
+.btn{
+    border: none;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+}
+
+.btn:hover{
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border: 2px solid black;
+}
+
+.pt-3 a{
+    color: black;
+}
+
+.log{
+    text-decoration: underline;
+}
+
+
+/*------------------------------------*/
+.footer{
+    padding: 30px;
+    background-color: rgb(33, 37, 41, 1);
+}
+
+.footer p{
+    color: white;
+    font-size: 15px;
+    text-align: center;
+}
