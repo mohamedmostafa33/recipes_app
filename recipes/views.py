@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
-
+from . import models
+'''
 recipes = [
     {
         'author': 'Alice',
@@ -32,9 +33,10 @@ recipes = [
         'date_posted': 'Jan 25 2025'
     }
 ]
-
+'''
 
 def home(request):
+    recipes = models.Recipe.objects.all()
     context = {
         'recipes' : recipes
     }
