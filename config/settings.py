@@ -117,6 +117,15 @@ USE_I18N = True
 USE_TZ = True
 
 
+
+# Define the URL where media files will be accessible from the browser
+MEDIA_URL = '/media/'
+
+# Define the filesystem path where media files will be stored
+MEDIA_ROOT = BASE_DIR / 'media'
+
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
