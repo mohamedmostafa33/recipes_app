@@ -1,3 +1,7 @@
+body{
+    height: 100%;
+}
+
 .mb-3 input, .mb-4 input{
     padding: 10px;
     border-radius: 10px;
@@ -39,4 +43,8 @@
     color: white;
     font-size: 15px;
     text-align: center;
+}
+
+.log-m3 p{
+    margin-bottom: 55px;
 }
