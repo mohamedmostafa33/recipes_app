@@ -29,6 +29,7 @@ def user_login(request):
 
             if user is not None:
                 login(request, user)
+                messages.success(request , f"Welcome, { user.username }!")
                 return redirect("recipes-home")
             else:
                 messages.error(request, "Invalid username or password")
