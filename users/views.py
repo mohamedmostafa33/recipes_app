@@ -46,4 +46,4 @@ def user_logout(request):
     
     messages.success(request, "You have been logged out successfully.")
 
-    return render(request, 'users/logout.html')
+    return redirect('recipes-landing')
