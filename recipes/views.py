@@ -1,6 +1,10 @@
 from django.shortcuts import render, HttpResponse
 from . import models
 
+
+def landing(request):
+    return render(request, 'recipes/index.html', {'title' : 'Recipes'})
+
 def home(request):
     recipes = models.Recipe.objects.all()
     context = {

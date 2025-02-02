@@ -1,0 +1,84 @@
+{% extends 'recipes/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="contanier">
+    
+    <div class="text-center my-5">
+        <h2>Welcome to Our Recipe Platform!</h2>
+        <p class="lead">Discover delicious recipes, enhance your cooking skills, and enjoy a variety of dishes from all over the world.</p>
+        <p>Whether you're a beginner or an expert, we have something for everyone!</p>
+        <a href="{% url 'recipes-about' %}" class="btn btn-primary btn-lg mt-4">Learn More About Us</a>
+    </div>
+
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+                <img src="{% static 'recipes/images/landing-banner-1.jpg' %}" class="d-block w-100 cs-50" alt="landing-banner-1">
+            </div>
+
+            <div class="carousel-item">
+                <img src="{% static 'recipes/images/landing-banner-2.jpg' %}" class="d-block w-100 cs-50" alt="landing-banner-2">
+            </div>
+
+            <div class="carousel-item">
+                <img src="{% static 'recipes/images/landing-banner-3.jpg' %}" class="d-block w-100 cs-50" alt="landing-banner-3">
+            </div>
+
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+
+    </div>
+
+</div>
+
+<div class="container my-5">
+    <h3 class="text-center mb-4">Why Choose Us?</h3>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card" style="height: 100%;">
+                <img src="{% static 'recipes/images/feature-1.png' %}" class="card-img-top" alt="Feature 1" style="object-fit: cover; height: 200px;">
+                <div class="card-body">
+                    <h5 class="card-title">Easy-to-Follow Recipes</h5>
+                    <p class="card-text">Our recipes come with detailed instructions that are easy to follow, no matter your cooking experience.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card" style="height: 100%;">
+                <img src="{% static 'recipes/images/feature-2.jpg' %}" class="card-img-top" alt="Feature 2" style="object-fit: cover; height: 200px;">
+                <div class="card-body">
+                    <h5 class="card-title">Healthy Options</h5>
+                    <p class="card-text">Find nutritious meals to fit your dietary needs, whether you're vegetarian, vegan, or gluten-free.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card" style="height: 100%;">
+                <img src="{% static 'recipes/images/feature-3.png' %}" class="card-img-top" alt="Feature 3" style="object-fit: cover; height: 200px;">
+                <div class="card-body">
+                    <h5 class="card-title">New Recipes Weekly</h5>
+                    <p class="card-text">We add new recipes every week, keeping your meals fresh and exciting.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center my-5">
+    <h3>Join Our Community of Food Lovers!</h3>
+    <p>Get access to exclusive recipes, tips, and much more when you sign up today.</p>
+    <a href="{% url 'user-register' %}" class="btn btn-success btn-lg">Sign Up Now</a>
+</div>
+
+{% endblock content %}
