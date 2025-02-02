@@ -20,10 +20,11 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-                <a class="navbar-brand" href="{% url 'recipes-home' %}">Recipes</a>
+                <a class="navbar-brand" href="{% url 'recipes-landing' %}">Recipes</a>
                 <button 
                 class="navbar-toggler" 
-                type="button" data-bs-toggle="collapse" 
+                type="button" 
+                data-bs-toggle="collapse" 
                 data-bs-target="#navbarNav" 
                 aria-controls="navbarNav" 
                 aria-expanded="false" 
@@ -39,6 +40,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'recipes-about' %}">About</a>
                         </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'recipe-create' %}">New Recipe</a>
+                        </li>
+                        {% endif %}
                     </ul>
                 </div>
                 <div class="navbar-nav">

@@ -12,8 +12,8 @@
             <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}">
             <h4>{{ recipe.title }}</h4>
             <p class="ll">{{ recipe.description }}</p>
-            <div class="lll">
-                <a href="#" class="rec-li">View Recipe</a>
+            <div>
+                <a href="{% url 'recipe-detail' recipe.pk %}" class="rec-li">View Recipe</a>
             </div>
         </div>
     {% endfor %}
