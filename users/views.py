@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from . import forms
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 def register(request):
     if request.method == 'POST':
@@ -29,7 +30,6 @@ def user_login(request):
 
             if user is not None:
                 login(request, user)
-                messages.success(request , f"Welcome, { user.username }!")
                 return redirect("recipes-home")
             else:
                 messages.error(request, "Invalid username or password")
@@ -41,9 +41,7 @@ def user_login(request):
     return render(request, 'users/login.html', {'form': form, 'title' : 'Login'})
 
 
+@login_required
 def user_logout(request):
     logout(request)
-    
-    messages.success(request, "You have been logged out successfully.")
-
     return redirect('recipes-landing')

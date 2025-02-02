@@ -1,10 +1,13 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 from . import models
+from django.contrib.auth.decorators import login_required
 
 
 def landing(request):
     return render(request, 'recipes/index.html', {'title' : 'Recipes'})
 
+
+@login_required
 def home(request):
     recipes = models.Recipe.objects.all()
     context = {

@@ -43,6 +43,7 @@
                 </div>
                 <div class="navbar-nav">
                     {% if user.is_authenticated %}
+                    <p class="nav-item nav-link mb-0 text-white me-3 ">Welcome, {{user.username}}</p>
                     <a href="{% url 'user-logout' %}" class="nav-link nav-item">Logout</a>
                     {% else %}
                     <a href="{% url 'user-login' %}" class="nav-link nav-item">Login</a>
