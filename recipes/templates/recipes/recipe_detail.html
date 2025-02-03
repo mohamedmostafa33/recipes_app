@@ -10,8 +10,9 @@
         <h1>{{ recipe.title }}</h1>
         <p>By <span class="recipe-auth">{{ recipe.author }}</span> | <span class="recipe-date">{{ recipe.created_at }}</span></p>
         <p class="recipe-desc">{{ recipe.description }}</p>
-        {% if recipe.author == user %}
-        <a href="{% url 'recipe-update' recipe.pk %}" class="rec-li edit-b">Update the Recipe</a>
+        {% if recipe.author == user%}
+        <a href="{% url 'recipe-update' recipe.pk %}" class="btn btn-outline-info">Update the Recipe</a>
+        <a href="{% url 'recipe-delete' recipe.pk%}" class="btn btn-outline-danger">Delete the Recipe</a>
         {% endif %}
     </div>
 </div>

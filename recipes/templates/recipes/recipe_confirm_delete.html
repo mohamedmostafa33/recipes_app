@@ -1,0 +1,21 @@
+{% extends 'recipes/base.html' %}
+
+{% block content %}
+
+<div class="col-md-6" style="padding: 50px;">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4 text-center ">Aou sure you want to delete '<span class="tite">{{ recipe.title }}</span>' recipe?</legend>
+            
+            <div class="recipe-sav" style="display: flex; justify-content: center;">
+                <input type="submit" value="Delete" class="btn btn-outline-danger">
+                <a href="{% url 'recipe-detail' recipe.pk %}" class="btn btn-outline-info">Cancel</a>
+            </div>
+            
+        </fieldset>
+    </form>
+</div>
+
+{% endblock content %}
+

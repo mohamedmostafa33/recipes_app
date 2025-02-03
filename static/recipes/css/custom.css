@@ -99,8 +99,10 @@
     font-size: 13px;
 }
 
-.edit-b{
-    margin-top: 10px;
-    font-size: 15px;
-    padding: 8px 18px;
+.btn-outline-info{
+    border: 2px solid #0dcaf0;
+}
+
+.btn-outline-danger{
+    border: 2px solid #dc3545;
 }
