@@ -16,7 +16,7 @@ def register(request):
             messages.error(request, "There was an error with your registration. Please check the form.")
     else:
         form = forms.UserRegisterForm()
-    return render(request, 'users/register.html', {'form' : form , 'title' : 'Register'})
+    return render(request, 'users/register.html', {'form' : form , 'title' : 'Recipes | Signup'})
 
 
 def user_login(request):
@@ -38,7 +38,7 @@ def user_login(request):
     else:
         form = forms.UserLoginForm()
     
-    return render(request, 'users/login.html', {'form': form, 'title' : 'Login'})
+    return render(request, 'users/login.html', {'form': form, 'title' : 'Recipes | Login'})
 
 
 @login_required

@@ -29,12 +29,21 @@ class RecipeListView(LoginRequiredMixin, ListView):
     template_name = 'recipes/home.html'
     context_object_name = 'recipes'
 
+    def get_context_data(slef, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Recipes | Home"
+        return context
+
 ### -- Class based recipes crud operations -- ###
 class RecipeDetailView(LoginRequiredMixin, DetailView):
     model = models.Recipe
     template_name = 'recipes/recipe_detail.html'
     context_object_name = 'recipe'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = f"Recipes | {self.get_object().title}"
+        return context
     
 class RecipeCreateView(LoginRequiredMixin, CreateView):
     model = models.Recipe
@@ -47,6 +56,11 @@ class RecipeCreateView(LoginRequiredMixin, CreateView):
     
     def get_success_url(self):
         return reverse_lazy('recipe-detail', kwargs={'pk':self.object.pk})
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Recipes | New Recipe"
+        return context
     
     
 class RecipeUpdateView(UserPassesTestMixin ,LoginRequiredMixin ,UpdateView):
@@ -65,6 +79,11 @@ class RecipeUpdateView(UserPassesTestMixin ,LoginRequiredMixin ,UpdateView):
         messages.error(self.request, 'Error: Only the author of the recipe can edit it.')
         return redirect('recipe-detail', pk=self.get_object().pk)
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Recipes | Update Recipe"
+        return context
+    
 
 class RecipeDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = models.Recipe 
@@ -79,7 +98,12 @@ class RecipeDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def get_success_url(self):
         messages.success(self.request, f"Recipe '{self.get_object().title}' deleted successfully.")
         return super().get_success_url()
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Recipes | Delete Recipe"
+        return context
             
 
 def about(request):
-    return render(request, 'recipes/about.html', {'title' : 'About us'})
+    return render(request, 'recipes/about.html', {'title' : 'Recipes | About'})
