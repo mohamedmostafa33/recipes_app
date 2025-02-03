@@ -106,3 +106,8 @@
 .btn-outline-danger{
     border: 2px solid #dc3545;
 }
+
+.tite{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+}

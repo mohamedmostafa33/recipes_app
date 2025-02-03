@@ -12,7 +12,7 @@
         <p class="recipe-desc">{{ recipe.description }}</p>
         {% if recipe.author == user%}
         <a href="{% url 'recipe-update' recipe.pk %}" class="btn btn-outline-info">Update the Recipe</a>
-        <a href="{% url 'recipe-delete' recipe.pk%}" class="btn btn-outline-danger">Delete the Recipe</a>
+        <a href="{% url 'recipe-delete' recipe.pk%}" class="btn btn-outline-danger delete-recipe">Delete the Recipe</a>
         {% endif %}
     </div>
 </div>
