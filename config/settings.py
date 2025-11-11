@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-q*tulomnt5wj46c7kusv(#6r%w=9r#bdkb893a8()8e2fe4=b!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     #local apps
     'recipes',
     'users',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -78,12 +79,18 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# Database configuration for AWS RDS (PostgreSQL)
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',  
+        'NAME': 'postgres',                                     
+        'USER': 'recipes_app',                                    
+        'PASSWORD': 'aaddSS131',                            
+        'HOST': 'recipes-app-db.cavcugmw0rzb.us-east-1.rds.amazonaws.com',   
+        'PORT': '5432',                                      
     }
 }
+
 
 
 # Password validation
@@ -118,18 +125,9 @@ USE_TZ = True
 
 
 
-# Define the URL where media files will be accessible from the browser
-MEDIA_URL = '/media/'
-
-# Define the filesystem path where media files will be stored
-MEDIA_ROOT = BASE_DIR / 'media'
-
-
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
@@ -143,3 +141,30 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #########################################################################
 LOGIN_REDIRECT_URL = 'recipes-home'
 LOGIN_URL = 'user-login'
+#########################################################################
+
+# AWS S3 Settings
+AWS_STORAGE_BUCKET_NAME = "recipes-app-bucket-nti"
+AWS_ACCESS_KEY_ID = 'AKIATLZTET6BNTERQSPL'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_S3_REGION_NAME = 'us-east-1'  # نفس region الـ RDS
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+AWS_DEFAULT_ACL = None  # استخدام bucket policy بدل ACL
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+AWS_QUERYSTRING_AUTH = False  # مهم: عشان الـ URLs تبقى نظيفة بدون query parameters
+
+# Django 4.2+ STORAGES configuration
+STORAGES = {
+    "default": {
+        "BACKEND": "config.storage_backends.MediaStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "config.storage_backends.StaticStorage",
+    },
+}
+
+# URLs for media and static files
+STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/staticfiles/'
+MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
